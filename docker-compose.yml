@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  fintranettest.presentation.server:
+    image: ${DOCKER_REGISTRY-}fintranettestpresentationserver
+    build:
+      context: .
+      dockerfile: FintranetTest.Presentation/Server/Dockerfile

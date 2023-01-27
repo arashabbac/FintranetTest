@@ -1,0 +1,66 @@
+﻿@if (Loading)
+{
+    <button type="@DisableButtonType" class="@Class" disabled style="@DisableButtonStyle">
+        <Spinner BSClassColor="@SpinnerColor" />
+        @if (ShowTitleOnLoading) 
+        {
+            @Title
+        }
+    </button>
+}
+else
+{
+    <button type="@ButtonType" class="@Class" @onclick="OnClickCallBack" style="@Style">
+        @Title
+    </button>
+}
+
+
+@code {
+
+    private bool _loading = false;
+    [Parameter]
+    public bool Loading
+    {
+        get
+        {
+            return _loading;
+        }
+        set
+        {
+            _loading = value;
+            ChangeCallBack.InvokeAsync();
+        }
+    }
+
+    [Parameter]
+    public bool ShowTitleOnLoading { get; set; } = true;
+
+    [Parameter]
+    public string Title { get; set; } = "Title Not Set!";
+
+    [Parameter]
+    public string DisableButtonType { get; set; } = "button";
+
+    [Parameter]
+    public string ButtonType { get; set; } = "submit";
+
+    [Parameter]
+    public string Class { get; set; } = "btn btn-primary mx-2";
+
+    [Parameter]
+    public string SpinnerColor { get; set; } = "text-light";
+
+    [Parameter]
+    public string Style { get; set; }
+
+    [Parameter]
+    public string DisableButtonStyle { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClickCallBack { get; set; }
+
+    [Parameter]
+    public EventCallback ChangeCallBack { get; set; }
+
+}

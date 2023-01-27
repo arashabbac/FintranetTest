@@ -1,0 +1,84 @@
+﻿<EditForm Model="Model" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+
+    <input type="hidden" @bind-value="Model.Id" />
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label" for="@nameof(Model.Firstname)">Firstname</label>
+                <div class="col-sm-9">
+                    <InputText name="@nameof(Model.Firstname)" class="form-control" @bind-Value="Model.Firstname"></InputText>
+                    <div class="error mt-2 text-danger">
+                        <ValidationMessage For="() => Model.Firstname" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label" for="@nameof(Model.Lastname)">Lastname</label>
+                <div class="col-sm-9">
+                    <InputText name="@nameof(Model.Lastname)" class="form-control" @bind-Value="Model.Lastname"></InputText>
+                    <div class="error mt-2 text-danger">
+                        <ValidationMessage For="() => Model.Lastname" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label" for="@nameof(Model.DateOfBirth)">Date of Birth</label>
+                <div class="col-sm-9">
+                    <InputDate name="@nameof(Model.DateOfBirth)" class="form-control" @bind-Value="Model.DateOfBirth"></InputDate>
+                    <div class="error mt-2 text-danger">
+                        <ValidationMessage For="() => Model.DateOfBirth" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label" for="@nameof(Model.Email)">Email</label>
+                <div class="col-sm-9">
+                    <InputText name="@nameof(Model.Email)" class="form-control" @bind-Value="Model.Email"></InputText>
+                    <div class="error mt-2 text-danger">
+                        <ValidationMessage For="() => Model.Email" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label" for="@nameof(Model.PhoneNumber)">Phone Number</label>
+                <div class="col-sm-9">
+                    <InputText name="@nameof(Model.PhoneNumber)" class="form-control" @bind-Value="Model.PhoneNumber"></InputText>
+                    <div class="error mt-2 text-danger">
+                        <ValidationMessage For="() => Model.PhoneNumber" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label" for="@nameof(Model.BankAccountNumber)">Bank Account Number</label>
+                <div class="col-sm-9">
+                    <InputText name="@nameof(Model.BankAccountNumber)" class="form-control" @bind-Value="Model.BankAccountNumber"></InputText>
+                    <div class="error mt-2 text-danger">
+                        <ValidationMessage For="() => Model.BankAccountNumber" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-end">
+        <Button HtmlType="submit" Style="margin-right:0.3em">@(Model.Id.HasValue ? "Edit" : "Create")</Button>
+        <Button OnClick="@(() => NavigationManager.NavigateTo("/customers"))" HtmlType="button">Return</Button>
+    </div>
+
+</EditForm>
+
+@code {
+
+}

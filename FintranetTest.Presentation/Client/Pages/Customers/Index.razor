@@ -1,0 +1,35 @@
+﻿@page "/customers"
+
+<PageTitle>Customers</PageTitle>
+
+<div class="container">
+
+    <div class="card border-0">
+        <div class="card-body">
+            <h4 class="card-title">Customers</h4>
+            @if (Customers == null)
+            {
+                <p><em>Loading...</em></p>
+            }
+            else
+            {
+                <p class="card-description d-flex justify-content-end">
+                    <Button OnClick="@(() => NavigationManager.NavigateTo("/customers/create"))">Create</Button>
+                </p>
+
+                <Table DataSource="@Customers" Loading="@_tableLoading">
+                    <PropertyColumn Title="First Name" Property="@(c=> c.Firstname)" />
+                    <PropertyColumn Title="Last Name" Property="@(c=>c.Lastname)" />
+                    <PropertyColumn Title="Date of Birth" Property="@(c=> c.DateOfBirth)" />
+                    <PropertyColumn Title="Phone Number" Property="@(c=> c.PhoneNumber)" />
+                    <PropertyColumn Title="Email" Property="@(c=>c.Email)" />
+                    <PropertyColumn  Title="Bank Account Number" Property="@(c => c.BankAccountNumber)"/>
+                    <PropertyColumn Title="Actions" Property="@(c=> c.Id)">
+                        <Button OnClick="@(() => NavigationManager.NavigateTo($"/customers/edit/{context.Id}"))" HtmlType="button">Edit</Button>
+                        <Button Danger Type="@ButtonType.Link" OnClick="@(() => DeleteCustomerAsync(context.Id))" HtmlType="button">Delete</Button>
+                    </PropertyColumn>
+                </Table>
+            }
+        </div>
+    </div>
+</div>
